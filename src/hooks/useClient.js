@@ -1,6 +1,8 @@
+import { useCallback } from "react";
+
 export const useClient = () => {
 
-    const callClient = async (url, method, body) => {
+    const callClient = useCallback(async (url, method, body) => {
         try {
             const response = await fetch(url, {
                 method,
@@ -10,7 +12,7 @@ export const useClient = () => {
         } catch (error) {
             return null
         }
-    }
+    }, [])
 
     return { callClient }
 }
